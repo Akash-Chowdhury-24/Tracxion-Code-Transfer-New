@@ -1,0 +1,368 @@
+CREATE TABLE IF NOT EXISTS "crate"."chats" (
+  "chat_id" TEXT NOT NULL,
+  "chat_type" TEXT,
+  "name" TEXT,
+  "group_picture" TEXT,
+  "created_at" TIMESTAMP WITHOUT TIME ZONE,
+  PRIMARY KEY ("chat_id")
+) CLUSTERED BY ("chat_id") INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+
+  CREATE TABLE IF NOT EXISTS "crate"."company_details" (
+    "company_name" TEXT,
+    "company_owner_first_name" TEXT,
+    "company_owner_last_name" TEXT,
+    "company_email" TEXT,
+    "company_contact_number" TEXT,
+    "company_address" TEXT,
+    "company_city_nm" TEXT,
+    "company_st_nm" TEXT,
+    "company_zp_cd" TEXT,
+    "company_logo_url" TEXT,
+    "is_active" BOOLEAN,
+    "update_by" TEXT,
+    "update_at" TIMESTAMP WITHOUT TIME ZONE,
+    "module" TEXT,
+    "company_id" TEXT
+  ) CLUSTERED INTO 4 SHARDS
+  WITH
+    (
+      column_policy = 'strict',
+      number_of_replicas = '0-1'
+    );
+
+
+    CREATE TABLE IF NOT EXISTS "crate"."contacts" (
+      "tenant_id" TEXT NOT NULL,
+      "contact_id" TEXT NOT NULL,
+      "wa_id" TEXT NOT NULL,
+      "name" TEXT,
+      "created_at" TIMESTAMP WITH TIME ZONE,
+      "updated_at" TIMESTAMP WITH TIME ZONE,
+      PRIMARY KEY ("tenant_id", "contact_id", "wa_id")
+    ) CLUSTERED INTO 4 SHARDS PARTITIONED BY ("tenant_id")
+    WITH
+      (
+        column_policy = 'strict',
+        number_of_replicas = '0-1'
+      );
+
+
+      CREATE TABLE IF NOT EXISTS "crate"."conversations" (
+    "tenant_id" TEXT NOT NULL,
+    "conversation_id" TEXT NOT NULL,
+    "contact_id" TEXT,
+    "status" TEXT NOT NULL,
+    "assigned_agent_id" TEXT,
+    "last_message_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    "last_inbound_at" TIMESTAMP WITH TIME ZONE,
+    "created_at" TIMESTAMP WITH TIME ZONE,
+    "updated_at" TIMESTAMP WITH TIME ZONE,
+    PRIMARY KEY (
+      "tenant_id",
+      "conversation_id",
+      "status",
+      "last_message_at"
+    )
+  ) CLUSTERED INTO 4 SHARDS PARTITIONED BY ("tenant_id")
+  WITH
+    (
+      column_policy = 'strict',
+      number_of_replicas = '0-1'
+    );
+
+    CREATE TABLE IF NOT EXISTS "crate"."departments" (
+  "departmentname" TEXT,
+  "isactive" BOOLEAN,
+  "updateby" TEXT,
+  "updateat" TIMESTAMP WITH TIME ZONE
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."holiday_list" (
+  "id" BIGINT NOT NULL,
+  "holiday_name" TEXT,
+  "holiday_date" TEXT,
+  "assignement_dept" CHARACTER(1),
+  "department" TEXT,
+  "user_id" TEXT,
+  "inserted_at" TIMESTAMP WITHOUT TIME ZONE,
+  PRIMARY KEY ("id")
+) CLUSTERED BY ("id") INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."invoices" (
+  "to_company" TEXT,
+  "invoice_start_date" TEXT,
+  "invoice_end_date" TEXT,
+  "usage_type" CHARACTER(1),
+  "apply_discount" BOOLEAN,
+  "discount_value" INTEGER,
+  "calculated_amount" DOUBLE PRECISION,
+  "total_amount" DOUBLE PRECISION,
+  "invoice_id" TEXT,
+  "discount_type" TEXT
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."locations" (
+  "name" TEXT,
+  "date" TEXT,
+  "kind" TEXT,
+  "pos" INTEGER
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."login_mod" (
+  "userid" TEXT,
+  "pass" VARCHAR(400),
+  "last_login" TIMESTAMP WITHOUT TIME ZONE,
+  "is_active" BOOLEAN,
+  "created_at" TIMESTAMP WITHOUT TIME ZONE
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."manage_rates" (
+    "voice_billing_type" CHARACTER(1),
+    "voice_billing_rate" DOUBLE PRECISION,
+    "chat_billing_type" CHARACTER(1),
+    "chat_billing_rate" DOUBLE PRECISION,
+    "insert_at" TIMESTAMP WITH TIME ZONE,
+    "update_at" TIMESTAMP WITH TIME ZONE,
+    "insert_by" TEXT,
+    "update_by" TEXT
+  ) CLUSTERED INTO 4 SHARDS
+  WITH
+    (
+      column_policy = 'strict',
+      number_of_replicas = '0-1'
+    );
+
+    CREATE TABLE IF NOT EXISTS "crate"."messageid_agents" (
+  "message_id" TEXT,
+  "agent_id" TEXT,
+  "session_start" TIMESTAMP WITH TIME ZONE,
+  "session_end" TIMESTAMP WITH TIME ZONE
+) CLUSTERED BY ("message_id") INTO 6 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1',
+    refresh_interval = 1000
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."messages" (
+  "message_id" TEXT NOT NULL,
+  "chat_id" TEXT NOT NULL,
+  "agent_id" TEXT,
+  "content" TEXT,
+  "media_url" TEXT,
+  "message_type" TEXT,
+  "status" TEXT,
+  "sentiment" TEXT,
+  "entities" ARRAY(TEXT),
+  "timestamp" TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+  "tenant_id" TEXT,
+  "conversation_id" TEXT,
+  "direction" TEXT,
+  "provider_message_id" TEXT,
+  PRIMARY KEY ("message_id", "chat_id", "timestamp"),
+  INDEX "sender_idx" USING PLAIN ("agent_id")
+) CLUSTERED BY ("chat_id") INTO 10 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."new_announcement" (
+  "announcement_name" TEXT,
+  "announcement_type" CHARACTER(1),
+  "anouncement_category" CHARACTER(1),
+  "announce_list" TEXT,
+  "announcement_description" TEXT,
+  "created_date" TIMESTAMP WITH TIME ZONE,
+  "created_by" TEXT
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."realtime_agents_presence" (
+  "conversation_id" TEXT NOT NULL,
+  "source" TEXT,
+  "account" TEXT,
+  "region" TEXT,
+  "provider" TEXT,
+  "address_to" TEXT,
+  "address_from" TEXT,
+  "status" BOOLEAN,
+  "last_seen" TIMESTAMP WITH TIME ZONE,
+  "session_id" TEXT,
+  "device_type" TEXT,
+  "ip_address" TEXT,
+  "metadata" OBJECT (DYNAMIC) AS ("correlation_id" TEXT),
+  "updated_at" TIMESTAMP WITH TIME ZONE,
+  "topic_name" TEXT,
+  "agent_id" TEXT,
+  "agent_name" TEXT,
+  "agent_email" TEXT,
+  "agent_queue_id" TEXT,
+  "count_connected_customer" INTEGER DEFAULT 0,
+  PRIMARY KEY ("conversation_id")
+) CLUSTERED BY ("conversation_id") INTO 6 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1',
+    refresh_interval = 1000
+  );
+
+
+  CREATE TABLE IF NOT EXISTS "crate"."roles" (
+  "rolename" TEXT,
+  "rolepermission" TEXT,
+  "updateby" TEXT,
+  "updateat" TIMESTAMP WITH TIME ZONE,
+  "isactive" BOOLEAN
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."staff_details" (
+    "staff_first_name" TEXT,
+    "staff_last_name" TEXT,
+    "staff_email" TEXT,
+    "staff_phone" TEXT,
+    "staff_role" TEXT,
+    "staff_departmant" TEXT,
+    "staff_id" TEXT,
+    "staff_logo_url" TEXT,
+    "update_by" TEXT,
+    "update_at" TIMESTAMP WITHOUT TIME ZONE,
+    "module_name" TEXT,
+    "is_active" BOOLEAN
+  ) CLUSTERED INTO 4 SHARDS
+  WITH
+    (
+      column_policy = 'strict',
+      number_of_replicas = '0-1'
+    );
+
+    CREATE TABLE IF NOT EXISTS "crate"."user_details" (
+  "id" BIGINT NOT NULL,
+  "name" TEXT,
+  "email" TEXT,
+  "created_at" TIMESTAMP WITH TIME ZONE,
+  PRIMARY KEY ("id")
+) CLUSTERED BY ("id") INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."users" (
+  "id" BIGINT NOT NULL,
+  "username" TEXT NOT NULL,
+  "created_at" TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
+  PRIMARY KEY ("id")
+) CLUSTERED BY ("id") INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."users_chat_dimension_table" (
+  "user_id" TEXT NOT NULL,
+  "phone_number" TEXT,
+  "username" TEXT,
+  "profile_picture" TEXT,
+  "status" TEXT,
+  "last_seen" TIMESTAMP WITHOUT TIME ZONE,
+  "created_at" TIMESTAMP WITHOUT TIME ZONE,
+  PRIMARY KEY ("user_id")
+) CLUSTERED BY ("user_id") INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."working_list" (
+  "NAME_OF_DAY" TEXT,
+  "START_AT" TEXT,
+  "END_AT" TEXT,
+  "WORKING_DAY" BOOLEAN,
+  "ANNUAL_HOLIDAY" BOOLEAN,
+  "UPDATE_BY" TEXT,
+  "UPDATE_AT" TIMESTAMP WITH TIME ZONE
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."working_list_det" (
+  "name_of_day" TEXT,
+  "start_at" TEXT,
+  "end_at" TEXT,
+  "working_day" BOOLEAN,
+  "annual_holiday" BOOLEAN,
+  "update_by" TEXT,
+  "update_at" TIMESTAMP WITH TIME ZONE
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  CREATE TABLE IF NOT EXISTS "crate"."working_list_det" (
+  "name_of_day" TEXT,
+  "start_at" TEXT,
+  "end_at" TEXT,
+  "working_day" BOOLEAN,
+  "annual_holiday" BOOLEAN,
+  "update_by" TEXT,
+  "update_at" TIMESTAMP WITH TIME ZONE
+) CLUSTERED INTO 4 SHARDS
+WITH
+  (
+    column_policy = 'strict',
+    number_of_replicas = '0-1'
+  );
+
+  

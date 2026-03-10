@@ -1,0 +1,144 @@
+.otp-verify-container{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("/auth-bg.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.otp-verify-form-container{
+  width: 450px;
+  height: 500px;
+  background-color: #00000061;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  padding: 2% 5%;
+}
+
+.otp-verify-form-container img{
+  width: 100px;
+  height: 100px;
+}
+
+.otp-verify-form-container-title{
+  font-size: 40px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0%;
+}
+
+.otp-verify-form-container-description{
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.otp-verify-form-container-input-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.otp-verify-form-container-input-box{
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2C2D33;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.otp-verify-form-container-input-box:focus{
+  outline: none;
+  border: 2px solid #00A1F9;
+  box-shadow: 0 0 0 3px rgba(0, 161, 249, 0.2);
+  background-color: #FFFFFF;
+}
+
+.otp-verify-form-container-input-box:disabled{
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.otp-verify-form-container-button{
+  width: 450px;
+  height: 40px;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0% 4%;
+  color: #FFFFFF;
+  background-color: #00A1F9;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    background-color: #0087D4;
+  }
+}
+
+
+/* API Error Message Styles */
+.otp-verify-form-container-api-error{
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Loading State Styles */
+.otp-verify-form-container-loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.otp-verify-form-container-spinner{
+  width: 16px;
+  height: 16px;
+  border: 2px solid #FFFFFF;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.otp-verify-form-container-button:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.otp-verify-form-container-button:disabled:hover{
+  background-color: #00A1F9;
+}

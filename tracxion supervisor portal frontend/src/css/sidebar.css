@@ -1,0 +1,40 @@
+.sidebar-container{
+  background-color: #050505;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.sidebar-logo-container img{
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.sidebar-nav-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-nav-container button{
+  background-color: transparent;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebar-nav-container button.selected{
+  background-color: #1a1a1a;
+  border : 2px solid #007bff;
+}

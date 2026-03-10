@@ -1,0 +1,9 @@
+.add-staff-input-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2%;
+}
+
+.add-staff-input-container .add-staff-input-extra-css {
+  padding: 2.4% 3%;
+}

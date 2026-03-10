@@ -1,0 +1,15 @@
+.common-button{
+  padding: 0.5% 1%;
+  border-radius: 0.5rem;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #00A1F9;
+  color: #FFFFFF;
+  border-color: #00A1F9;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    transform: scale(1.03);
+  }
+}

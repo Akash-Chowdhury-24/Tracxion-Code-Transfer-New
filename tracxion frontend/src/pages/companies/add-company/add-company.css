@@ -1,0 +1,28 @@
+.add-company-title-container h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #172B4D;
+  margin: 0%;
+  margin-bottom: 1%;
+}
+
+.add-company-input-container1{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2%;
+}
+
+.add-company-input-container1 .add-company-input-extra-css {
+  padding: 2.4% 3%;
+}
+
+
+.add-company-input-container2{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 2%;
+}
+
+.add-company-input-container2 .add-company-input-extra-css2 {
+  padding: 3.5% 4%;
+}

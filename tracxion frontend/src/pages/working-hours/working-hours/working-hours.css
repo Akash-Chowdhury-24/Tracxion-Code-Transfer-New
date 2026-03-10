@@ -1,0 +1,29 @@
+.working-hours-day-container{
+  padding: 0% 4%;
+}
+.working-hours-day-item {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2%;
+  align-items: center;
+  justify-content: start;
+  margin: 2% 0;
+  width: 100%;
+}
+
+.working-hours-day-item h1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C2D33;
+  margin: 0%;
+  text-align: left;
+  width: 20px;
+}
+
+.working-hours-day-item .working-hours-time-input-container {
+  flex: 1.5;
+}
+
+.working-hours-day-item .working-hours-time-input-container .working-hours-time-input{
+  padding: 2% 3%;
+}

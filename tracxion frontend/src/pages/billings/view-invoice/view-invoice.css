@@ -1,0 +1,151 @@
+.view-invoice-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3%;
+  background-color: #050505;
+  border-radius: 0.5rem;
+}
+
+.view-invoice-header-container img {
+  width: 107px;
+  height: 107px;
+  object-fit: contain;
+}
+
+.view-invoice-header-container .view-invoice-header-address-container {
+  width: 270px;
+}
+
+.view-invoice-header-container .view-invoice-header-address-container p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0%;
+  line-height: 1.5;
+  text-align: right;
+}
+
+
+.view-invoice-title {
+  color: #2C2D33;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 2% 0%;
+}
+
+.view-invoice-to-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.view-invoice-to-container .view-invoice-to-container-left {
+  width: 300px;
+}
+
+.view-invoice-to-container .view-invoice-to-container-left .view-invoice-to-container-left-select {
+  padding: 3% 4%;
+}
+
+.view-invoice-to-container .view-invoice-to-container-right {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+}
+
+.view-invoice-to-container .view-invoice-to-container-right p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+  line-height: 1.5;
+  text-align: right;
+}
+
+
+.view-invoice-company-display {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.view-invoice-company-display h3 {
+  color: #2C2D33;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0%;
+}
+
+.view-invoice-company-display p {
+  color: #2C2D33;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0%;
+}
+
+.view-invoice-divider {
+  margin: 2% 0%;
+  height: 1px;
+  background-color: #4040404D;
+}
+
+.view-invoice-amount-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-invoice-amount-container div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.view-invoice-amount-container div p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+}
+
+.view-invoice-notes-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+.view-invoice-notes-container p{
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+}
+.view-invoice-notes-container div{
+  font-size: 14px;
+  font-weight: 300;
+  color: #2C2D33;
+  margin: 0%;
+  background-color: #262B4338;
+  padding: 1%;
+  border-radius: 0.5rem;
+}
+
+.view-invoice-date-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5vh;
+}
+
+.view-invoice-date-container div{
+  display: flex;
+  flex-direction: row;
+}
+
+.view-invoice-date-container div p{
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+}

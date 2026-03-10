@@ -1,0 +1,180 @@
+.edit-invoice-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3%;
+  background-color: #050505;
+  border-radius: 0.5rem;
+}
+
+.edit-invoice-header-container img {
+  width: 107px;
+  height: 107px;
+  object-fit: contain;
+}
+
+.edit-invoice-header-container .edit-invoice-header-address-container {
+  width: 270px;
+}
+
+.edit-invoice-header-container .edit-invoice-header-address-container p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0%;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.edit-invoice-header-address-container h3 {
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0%;
+  text-align: right;
+  margin-bottom: 4%;
+}
+
+.edit-invoice-title {
+  color: #2C2D33;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 2% 0%;
+}
+
+.edit-invoice-to-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.edit-invoice-to-container .edit-invoice-to-container-left {
+  width: 300px;
+}
+
+.edit-invoice-to-container .edit-invoice-to-container-left .edit-invoice-to-container-left-select {
+  padding: 3% 4%;
+}
+
+.edit-invoice-to-container .edit-invoice-to-container-right {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+}
+
+.edit-invoice-to-container .edit-invoice-to-container-right p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.edit-invoice-input-container {
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2%;
+  row-gap: 2%;
+}
+
+.edit-invoice-input-container .edit-invoice-input-container-input {
+  padding: 2% 3%;
+}
+
+.edit-invoice-usage-container {
+  margin-left: 1.5%;
+}
+
+.edit-invoice-usage-container h3 {
+  color: #2C2D33;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0%;
+}
+
+.edit-invoice-usage-container h3 span {
+  color: #FF4D49;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.edit-invoice-usage-container div {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2%;
+}
+
+
+.edit-invoice-discount-container-left {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1%;
+  align-items: center;
+  margin-left: 1.5%;
+}
+
+.edit-invoice-discount-container-left h3 {
+  color: #2C2D33;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0%;
+}
+
+.edit-invoice-discount-container-left h3 span {
+  color: #FF4D49;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.edit-invoice-discount-container-right {
+  margin-left: 1.5%;
+}
+
+.edit-invoice-divider {
+  margin: 2% 0%;
+  height: 1px;
+  background-color: #4040404D;
+}
+
+.edit-invoice-amount-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-invoice-amount-container div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit-invoice-amount-container div p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+}
+
+.edit-invoice-notes-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+.edit-invoice-notes-container p{
+  font-size: 14px;
+  font-weight: 400;
+  color: #2C2D33;
+  margin: 0%;
+}
+.edit-invoice-notes-container div{
+  font-size: 14px;
+  font-weight: 300;
+  color: #2C2D33;
+  margin: 0%;
+  background-color: #262B4338;
+  padding: 1%;
+  border-radius: 0.5rem;
+}
